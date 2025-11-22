@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aishwarya Honnale | Github</title>
     <style>
+        :root{
+            --accent: cornflowerblue;
+            --muted: #6b7280;
+            --nav-bg: #ffffff;
+            --nav-border: #e6e6e6;
+        }
+
+        /* page styles (existing) */
         h1{
             color: cornflowerblue;
             background-color: pink;
@@ -17,13 +25,127 @@
             padding-left: 10px;
             font-size: medium;
         }
+
+        /* NAVBAR */
+        .site-header{
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--nav-border);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .site-header .container{
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo{
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 6px 8px;
+            border-radius: 8px;
+        }
+
+        /* default desktop nav */
+        .nav-links{
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .nav-links a{
+            text-decoration: none;
+            color: #111827;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background .15s, color .15s, transform .08s;
+            font-weight: 600;
+        }
+        .nav-links a:hover{
+            background: rgba(99,102,241,0.08);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+        .nav-links a.active{
+            background: linear-gradient(90deg,var(--accent),#7c3aed);
+            color: white;
+        }
+
+        /* mobile: use details/summary as CSS-only toggle */
+        details.menu{
+            display: none;
+        }
+
+        /* responsive rules */
+        @media (max-width: 720px){
+            .site-header .container{padding:10px;}
+            .nav-links{display: none;} /* hide default links */
+            details.menu{display:block;} /* show toggle */
+            details.menu summary{
+                list-style: none;
+                cursor: pointer;
+                padding: 8px 12px;
+                border-radius: 8px;
+                background: transparent;
+                color: #111827;
+                font-weight: 700;
+                border: 1px solid transparent;
+            }
+            /* hide default triangle */
+            details.menu summary::-webkit-details-marker{display:none}
+            details.menu summary::marker{display:none}
+
+            /* when open, show vertical nav */
+            details.menu[open] .nav-links{
+                display:block;
+                margin-top:8px;
+                background: transparent;
+                padding: 10px 6px;
+            }
+            details.menu .nav-links a{
+                display:block;
+                padding:10px 12px;
+                border-radius:8px;
+            }
+        }
+
+        /* small visual tweak for image area */
+        img{max-width:100%;height:auto;display:block;margin:12px 0;}
     </style>
 </head>
 <body>
+    <header class="site-header" role="banner">
+      <div class="container">
+        <a class="logo" href="index.html">Aishwarya H.</a>
+
+        <!-- Desktop links (shown by default on larger screens) -->
+        <nav class="nav-links" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <!-- Mobile toggle (CSS-only) -->
+        <details class="menu" role="button" aria-label="Open menu">
+          <summary>Menu</summary>
+          <nav class="nav-links" aria-label="Mobile navigation">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+
     <h1 align="center">Welcome to SB University</h1>
-    <a href="index.html">Home </a>
-    <a href="about.html">About </a>
-    <a href="contact.html">contact </a>
+    <!-- replaced simple anchors with styled nav bar above -->
     <img src="image.png" alt="" width="50%">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ad enim rem eaque officia tempore dolorem labore sint unde nam consequuntur nesciunt recusandae omnis aliquid, vitae quas a. Sed, ab.</p>
 </body>
