@@ -1,152 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aishwarya Honnale | Github</title>
-    <style>
-        :root{
-            --accent: cornflowerblue;
-            --muted: #6b7280;
-            --nav-bg: #ffffff;
-            --nav-border: #e6e6e6;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aishwarya H. — Home</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --accent:#3b82f6;
+      --muted:#6b7280;
+      --radius:12px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      background:var(--bg);
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
 
-        /* page styles (existing) */
-        h1{
-            color: cornflowerblue;
-            background-color: pink;
-            padding: 10px;
-        }
-        p{
-            color: blueviolet;
-            background-color: aquamarine;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            padding-left: 10px;
-            font-size: medium;
-        }
+    .site-header{
+      background:linear-gradient(180deg,#ffffffcc,#fbfdff);
+      border-bottom:1px solid #e6e9ef;
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter: blur(4px);
+    }
+    .container{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--accent);
+      font-weight:700;
+      font-size:18px;
+    }
+    .logo .mark{
+      width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#8b5cf6);
+      color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+    }
 
-        /* NAVBAR */
-        .site-header{
-            background: var(--nav-bg);
-            border-bottom: 1px solid var(--nav-border);
-            position: sticky;
-            top: 0;
-            z-index: 40;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-        }
-        .site-header .container{
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-        }
+    nav.nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    nav.nav a{
+      text-decoration:none;color:#0f1724;padding:8px 12px;border-radius:8px;font-weight:600;
+    }
+    nav.nav a:hover{color:var(--accent);background:rgba(59,130,246,0.06)}
+    nav.nav a.active{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#fff}
 
-        .logo{
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 18px;
-            padding: 6px 8px;
-            border-radius: 8px;
-        }
+    /* mobile toggle */
+    details.menu{display:none}
+    @media (max-width:800px){
+      nav.nav{display:none}
+      details.menu{display:block}
+      details.menu summary{cursor:pointer;padding:8px 10px;border-radius:8px;background:transparent;border:1px solid transparent}
+      details.menu summary::-webkit-details-marker{display:none}
+      details.menu[open] .nav{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+      .container{padding:10px 16px}
+    }
 
-        /* default desktop nav */
-        .nav-links{
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-        .nav-links a{
-            text-decoration: none;
-            color: #111827;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: background .15s, color .15s, transform .08s;
-            font-weight: 600;
-        }
-        .nav-links a:hover{
-            background: rgba(99,102,241,0.08);
-            color: var(--accent);
-            transform: translateY(-1px);
-        }
-        .nav-links a.active{
-            background: linear-gradient(90deg,var(--accent),#7c3aed);
-            color: white;
-        }
+    /* Hero */
+    .hero{
+      max-width:var(--maxw);
+      margin:28px auto;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:center;
+      padding:0 20px;
+    }
+    .hero-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 8px 30px rgba(10,20,40,0.06);
+    }
+    h1{margin:0 0 12px;font-size:28px;color:#0b1220}
+    p.lead{margin:0 0 18px;color:var(--muted)}
 
-        /* mobile: use details/summary as CSS-only toggle */
-        details.menu{
-            display: none;
-        }
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700;color:white;background:linear-gradient(90deg,var(--accent),#7c3aed)}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid #e6e9ef}
 
-        /* responsive rules */
-        @media (max-width: 720px){
-            .site-header .container{padding:10px;}
-            .nav-links{display: none;} /* hide default links */
-            details.menu{display:block;} /* show toggle */
-            details.menu summary{
-                list-style: none;
-                cursor: pointer;
-                padding: 8px 12px;
-                border-radius: 8px;
-                background: transparent;
-                color: #111827;
-                font-weight: 700;
-                border: 1px solid transparent;
-            }
-            /* hide default triangle */
-            details.menu summary::-webkit-details-marker{display:none}
-            details.menu summary::marker{display:none}
+    /* Right panel */
+    .panel{
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      padding:22px;border-radius:12px;border:1px solid #f0f3f7;
+    }
+    .panel h3{margin:0 0 8px}
+    .meta{font-size:13px;color:var(--muted)}
 
-            /* when open, show vertical nav */
-            details.menu[open] .nav-links{
-                display:block;
-                margin-top:8px;
-                background: transparent;
-                padding: 10px 6px;
-            }
-            details.menu .nav-links a{
-                display:block;
-                padding:10px 12px;
-                border-radius:8px;
-            }
-        }
+    /* Features */
+    .features{
+      max-width:var(--maxw);
+      margin:18px auto;
+      padding:0 20px 60px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .feature{
+      background:var(--card);padding:18px;border-radius:12px;border:1px solid #f0f3f7;
+      box-shadow:0 6px 20px rgba(12,20,40,0.04)
+    }
+    .feature h4{margin:0 0 8px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
 
-        /* small visual tweak for image area */
-        img{max-width:100%;height:auto;display:block;margin:12px 0;}
-    </style>
+    footer{
+      max-width:var(--maxw);margin:0 auto;padding:20px;text-align:center;color:var(--muted);font-size:14px;
+    }
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .features{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-    <header class="site-header" role="banner">
-      <div class="container">
-        <a class="logo" href="index.html">Aishwarya H.</a>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <span class="mark" aria-hidden="true">AH</span>
+        Aishwarya H.
+      </a>
 
-        <!-- Desktop links (shown by default on larger screens) -->
-        <nav class="nav-links" role="navigation" aria-label="Main navigation">
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+      <nav class="nav" role="navigation" aria-label="Main">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <details class="menu" role="button" aria-label="Menu">
+        <summary>Menu</summary>
+        <nav class="nav" aria-label="Mobile">
+          <a href="index.html" class="active">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </nav>
+      </details>
+    </div>
+  </header>
 
-        <!-- Mobile toggle (CSS-only) -->
-        <details class="menu" role="button" aria-label="Open menu">
-          <summary>Menu</summary>
-          <nav class="nav-links" aria-label="Mobile navigation">
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-        </details>
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Welcome to my portfolio</h1>
+        <p class="lead">I design and build accessible, performant web interfaces. Explore projects, read about my approach, or get in touch.</p>
+        <div class="cta-row">
+          <a class="btn" href="contact.html">Get in touch</a>
+          <a class="btn ghost" href="about.html">Learn more</a>
+        </div>
       </div>
-    </header>
 
-    <h1 align="center">Welcome to SB University</h1>
-    <!-- replaced simple anchors with styled nav bar above -->
-    <img src="image.png" alt="" width="50%">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ad enim rem eaque officia tempore dolorem labore sint unde nam consequuntur nesciunt recusandae omnis aliquid, vitae quas a. Sed, ab.</p>
+      <aside class="panel" aria-labelledby="panelTitle">
+        <h3 id="panelTitle">Quick info</h3>
+        <p class="meta">Based in City — Available for freelance and collaborations.</p>
+        <hr style="border:none;border-top:1px solid #eef2f7;margin:14px 0">
+        <p style="margin:0;font-size:14px;color:var(--muted)">Recent: Updated portfolio & a new blog post on modern CSS patterns.</p>
+      </aside>
+    </section>
+
+    <section class="features" aria-label="Highlights">
+      <div class="feature">
+        <h4>Responsive UI</h4>
+        <p>Build layouts that look great on any device using semantic HTML and modern CSS.</p>
+      </div>
+      <div class="feature">
+        <h4>Performance</h4>
+        <p>Focus on fast load times and minimal, efficient CSS for smooth experiences.</p>
+      </div>
+      <div class="feature">
+        <h4>Accessibility</h4>
+        <p>Components designed to be usable by everyone—keyboard friendly and screen-reader aware.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Aishwarya Honnale — Built with HTML & CSS
+  </footer>
 </body>
 </html>
